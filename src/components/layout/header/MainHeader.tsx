@@ -9,6 +9,7 @@ import { BiSearch, BiUser } from "react-icons/bi";
 
 const MainHeader = () => {
    const { cart } = useContext(CartContext);
+   const totalPrice = cart.reduce((acc: number, item: any) => acc + item.price, 0);
    return (
       <div className="bg-primary py-4">
          <div className="container mx-auto px-4">
@@ -66,7 +67,7 @@ const MainHeader = () => {
                         </span>
                      </span>
                      <span className="pl-6 text-gray-500">{"|"}</span>
-                     <span className="ml-2">$0.00</span>
+                     <span className="ml-2">${totalPrice.toFixed(2)}</span>
                   </div>
                </div>
             </div>
