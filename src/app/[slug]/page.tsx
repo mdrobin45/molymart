@@ -2,10 +2,11 @@ import ProductCalculation from "@/components/productDetails/ProductCalculation";
 import ProductGallery from "@/components/productDetails/ProductGallery";
 import ProductInfo from "@/components/productDetails/productInfo/Index";
 
-interface ProductDetailsProps {  
-   params: { slug: string };
+interface ProductDetailsProps {
+   params: Promise<{ slug?: string }>;
 }
 const ProductDetails = async ({ params }: ProductDetailsProps) => {
+   const currentParams = await params;
    const fetchProducts = await fetch(
       `${
          process.env.NODE_ENV === "development"
@@ -16,7 +17,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
 
    const products = await fetchProducts.json();
    const currentProduct = products.find(
-      (product: any) => product.slug === params.slug
+      (product: any) => product?.slug === currentParams?.slug
    );
    if (!currentProduct) {
       return <div>Product not found</div>;
