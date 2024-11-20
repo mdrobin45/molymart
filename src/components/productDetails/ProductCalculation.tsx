@@ -106,11 +106,11 @@ const ProductCalculation = ({ product }: { product: any }) => {
 
             {/* Action Buttons */}
             <div className="space-y-3 my-3">
-               <button className="flex w-full items-center justify-center rounded-lg bg-primary py-4 text-sm font-semibold text-black shadow-sm hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary">
+               <button className="flex w-full items-center justify-center rounded-lg bg-primary py-4 text-sm font-semibold text-secondary shadow-sm hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary">
                   <BsHandbag className="mr-2 h-4 w-4" />
                   Buy Now
                </button>
-               <button className="flex w-full items-center justify-center rounded-lg bg-black py-4 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-black">
+               <button className="flex w-full items-center justify-center rounded-lg bg-secondary py-4 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary">
                   <CgShoppingCart className="mr-2 h-4 w-4" />
                   Add to Cart
                </button>

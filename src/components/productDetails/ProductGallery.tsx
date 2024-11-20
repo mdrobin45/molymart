@@ -26,7 +26,7 @@ const ProductGallery = ({ product }: { product: any }) => {
                   key={index}
                   onClick={() => setCurrentImage(index)}
                   className={`relative aspect-square w-20 overflow-hidden rounded-lg ${
-                     currentImage === index ? "ring-2 ring-black" : ""
+                     currentImage === index ? "ring-2 ring-secondary" : ""
                   }`}>
                   <Image
                      width={88}

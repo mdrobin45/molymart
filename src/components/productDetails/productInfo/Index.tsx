@@ -9,9 +9,8 @@ import {
 } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { IoIosGitCompare } from "react-icons/io";
-import SalesEndCountDown from "./SalesEndCountDown";
 import { Rating } from "react-simple-star-rating";
-
+import SalesEndCountDown from "./SalesEndCountDown";
 
 const ProductInfo = ({ product }: { product: any }) => {
    const [selectedSize, setSelectedSize] = useState("42");
@@ -36,12 +35,8 @@ const ProductInfo = ({ product }: { product: any }) => {
                   {product?.sold_count} Sold
                </span>
             </div>
-            <h1 className="mt-4 text-2xl font-semibold">
-               {product?.title}
-            </h1>
-            <p className="text-sm py-2 text-gray-600">
-               {product?.description}
-            </p>
+            <h1 className="mt-4 text-2xl font-semibold">{product?.title}</h1>
+            <p className="text-sm py-2 text-gray-600">{product?.description}</p>
 
             {/* Sale ends countdown */}
             <SalesEndCountDown timeLeft={product?.sale?.time_left} />
@@ -49,11 +44,13 @@ const ProductInfo = ({ product }: { product: any }) => {
 
          {/* Price */}
          <div className="flex items-center gap-4">
-            <span className="text-3xl font-bold">${product?.price?.current}</span>
+            <span className="text-3xl font-bold">
+               ${product?.price?.current}
+            </span>
             <span className="text-lg text-gray-500 line-through">
                ${product?.price?.original}
             </span>
-            <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-black">
+            <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-secondary">
                Save {product?.price?.discount}
             </span>
          </div>
@@ -72,7 +69,7 @@ const ProductInfo = ({ product }: { product: any }) => {
                      }}
                      className={`h-8 w-8 rounded-full border-2 ${
                         selectedColor === color?.name
-                           ? "ring-2 ring-black ring-offset-2"
+                           ? "ring-2 ring-secondary ring-offset-2"
                            : ""
                      }`}
                   />
@@ -90,7 +87,7 @@ const ProductInfo = ({ product }: { product: any }) => {
                      onClick={() => setSelectedSize(size)}
                      className={`h-10 w-10 rounded border ${
                         selectedSize === size
-                           ? "border-black bg-primary text-black"
+                           ? "border-secondary bg-primary text-secondary"
                            : "border-gray-200"
                      }`}>
                      {size}
@@ -137,10 +134,10 @@ const ProductInfo = ({ product }: { product: any }) => {
 
             {/* Wishlist and Compare Buttons */}
             <div className="flex space-x-4">
-               <button className="flex items-center px-4 py-2 text-sm text-black bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
+               <button className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
                   <BsHeart className="mr-2 h-4 w-4" /> Add to Wishlist
                </button>
-               <button className="flex items-center px-4 py-2 text-sm text-black bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
+               <button className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
                   <IoIosGitCompare className="mr-2 h-4 w-4" /> Add to Compare
                </button>
             </div>

@@ -1,4 +1,4 @@
-import { HiHeart } from "react-icons/hi";
+import Link from "next/link";
 import { TfiAngleRight } from "react-icons/tfi";
 
 // Navigation pages
@@ -29,16 +29,16 @@ const Navigation = () => {
       <div className="border-b">
          <div className="container mx-auto px-4">
             <div className="flex items-center justify-between py-4">
-               <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+               <ul className="flex items-center gap-x-6">
                   {pages.map((page) => (
                      <li
                         key={page.name}
                         className="group max-lg:border-b max-lg:px-3 max-lg:py-3 relative">
-                        <a
+                        <Link
                            href={`${
                               page.subPages ? "javascript:void(0)" : page.href
                            }`}
-                           className="hover:text-primary hover:fill-primary text-gray-600 font-semibold text-[15px] block">
+                           className="hover:text-primary hover:fill-primary text-secondary font-[500] text-[15px] block">
                            {page.name}
                            {page.subPages && page.subPages.length > 0 && (
                               <svg
@@ -54,7 +54,7 @@ const Navigation = () => {
                                  />
                               </svg>
                            )}
-                        </a>
+                        </Link>
 
                         {page.subPages && page.subPages.length > 0 && (
                            <ul className="absolute top-5 max-lg:top-8 left-0 z-50 block space-y-2 shadow-lg bg-white max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
@@ -62,12 +62,12 @@ const Navigation = () => {
                                  <li
                                     key={subPage.name}
                                     className="border-b py-3">
-                                    <a
+                                    <Link
                                        href={subPage.href}
                                        className="hover:text-primary hover:fill-primary text-gray-600 font-semibold text-[15px] block">
                                        <TfiAngleRight className="w-[16px] mr-2 h-[16px] inline-block" />
                                        {subPage.name}
-                                    </a>
+                                    </Link>
                                  </li>
                               ))}
                            </ul>
@@ -75,18 +75,40 @@ const Navigation = () => {
                      </li>
                   ))}
                </ul>
-
-               <div className="flex items-center gap-4">
-                  <button className="font-medium">Compare</button>
-                  <button className="font-medium flex items-center gap-2">
-                     <HiHeart className="w-4 h-4" />
-                     Wishlist
-                     <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                        1
-                     </span>
-                  </button>
-                  <button className="font-medium">Track Order</button>
-               </div>
+               <ul className="flex items-center gap-4">
+                  <li
+                     className="group max-lg:border-b max-lg:px-3 max-
+                        lg:py-3 relative">
+                     <Link
+                        href="#"
+                        className="hover:text-primary hover:fill-primary text-secondary font-[500] text-[15px] block">
+                        Home
+                     </Link>
+                  </li>
+                  <span className=" text-gray-400">|</span>
+                  <li
+                     className="group max-lg:border-b max-lg:px-3 max-
+                        lg:py-3 relative">
+                     <Link
+                        href="#"
+                        className="hover:text-primary flex items-center gap-2 hover:fill-primary text-secondary font-[500] text-[15px]">
+                        Wishlist
+                        <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                           1
+                        </span>
+                     </Link>
+                  </li>
+                  <span className=" text-gray-400">|</span>
+                  <li
+                     className="group max-lg:border-b max-lg:px-3 max-
+                        lg:py-3 relative">
+                     <Link
+                        href="#"
+                        className="hover:text-primary hover:fill-primary text-secondary font-[500] text-[15px] block">
+                        Track Order
+                     </Link>
+                  </li>
+               </ul>
             </div>
          </div>
       </div>

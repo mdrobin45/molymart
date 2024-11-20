@@ -1,7 +1,7 @@
 import molymartLogo from "@/assets/images/molymart-logo.svg";
 import Image from "next/image";
-import { BiSearch, BiShoppingBag, BiUser } from "react-icons/bi";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import Link from "next/link";
+import { BiSearch, BiUser } from "react-icons/bi";
 
 const MainHeader = () => {
    return (
@@ -18,7 +18,7 @@ const MainHeader = () => {
                </div>
 
                <div className="hidden md:flex flex-1 max-w-xl relative">
-                  <select className="absolute text-white left-0 top-0 h-full bg-black rounded-md px-3 focus:outline-none">
+                  <select className="absolute text-white left-0 top-0 h-full bg-secondary rounded-md px-3 focus:outline-none">
                      <option value="">All Categories</option>
                      <option value="1">Category 1</option>
                      <option value="2">Category 2</option>
@@ -37,19 +37,32 @@ const MainHeader = () => {
                </div>
 
                <div className="flex items-center gap-4">
-                  <button className="hidden sm:flex items-center gap-2">
+                  <Link href="#" className="hidden sm:flex items-center gap-2">
                      <BiUser className="w-5 h-5" />
                      <div className="text-left">
                         <div>Sign in/up</div>
                      </div>
-                  </button>
+                  </Link>
 
-                  <button className="relative flex items-center">
-                     <MdOutlineShoppingCart className="w-5 h-5" />
-                     <span>0</span>
-                     <span className="px-1">{"|"}</span>
+                  <div className="relative flex items-center">
+                     <span className="relative">
+                        <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           width="20px"
+                           height="20px"
+                           className="cursor-pointer fill-secondary hover:fill-secondary inline-block"
+                           viewBox="0 0 512 512">
+                           <path
+                              d="M164.96 300.004h.024c.02 0 .04-.004.059-.004H437a15.003 15.003 0 0 0 14.422-10.879l60-210a15.003 15.003 0 0 0-2.445-13.152A15.006 15.006 0 0 0 497 60H130.367l-10.722-48.254A15.003 15.003 0 0 0 105 0H15C6.715 0 0 6.715 0 15s6.715 15 15 15h77.969c1.898 8.55 51.312 230.918 54.156 243.71C131.184 280.64 120 296.536 120 315c0 24.812 20.188 45 45 45h272c8.285 0 15-6.715 15-15s-6.715-15-15-15H165c-8.27 0-15-6.73-15-15 0-8.258 6.707-14.977 14.96-14.996zM477.114 90l-51.43 180H177.032l-40-180zM150 405c0 24.813 20.188 45 45 45s45-20.188 45-45-20.188-45-45-45-45 20.188-45 45zm45-15c8.27 0 15 6.73 15 15s-6.73 15-15 15-15-6.73-15-15 6.73-15 15-15zm167 15c0 24.813 20.188 45 45 45s45-20.188 45-45-20.188-45-45-45-45 20.188-45 45zm45-15c8.27 0 15 6.73 15 15s-6.73 15-15 15-15-6.73-15-15 6.73-15 15-15zm0 0"
+                              data-original="#000000"></path>
+                        </svg>
+                        <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                           4
+                        </span>
+                     </span>
+                     <span className="pl-6 text-gray-500">{"|"}</span>
                      <span className="ml-2">$0.00</span>
-                  </button>
+                  </div>
                </div>
             </div>
          </div>
