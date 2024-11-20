@@ -1,9 +1,14 @@
+"use client";
+
 import molymartLogo from "@/assets/images/molymart-logo.svg";
+import { CartContext } from "@/context/CartContextProvider";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { BiSearch, BiUser } from "react-icons/bi";
 
 const MainHeader = () => {
+   const { cart } = useContext(CartContext);
    return (
       <div className="bg-primary py-4">
          <div className="container mx-auto px-4">
@@ -57,7 +62,7 @@ const MainHeader = () => {
                               data-original="#000000"></path>
                         </svg>
                         <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                           4
+                           {cart?.length !== 0 ? cart?.length : 0}
                         </span>
                      </span>
                      <span className="pl-6 text-gray-500">{"|"}</span>

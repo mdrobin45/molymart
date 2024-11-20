@@ -1,7 +1,8 @@
+import Header from "@/components/layout/header/Index";
+import CartContextProvider from "@/context/CartContextProvider";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/header/Index";
 
 // Fonts
 const instrumentSans = Instrument_Sans({
@@ -24,8 +25,10 @@ export default function RootLayout({
       <html lang="en">
          <body className={`${instrumentSans.variable}`}>
             <main className="font-instrumentSans">
-               <Header />
-               {children}
+               <CartContextProvider>
+                  <Header />
+                  {children}
+               </CartContextProvider>
             </main>
          </body>
       </html>

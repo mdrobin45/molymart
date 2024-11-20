@@ -5,8 +5,9 @@ import mastercard from "@/assets/images/mastercard.svg";
 import paypal from "@/assets/images/paypal.svg";
 import visa from "@/assets/images/visa.svg";
 import westernUnion from "@/assets/images/western-union.svg";
+import { CartContext } from "@/context/CartContextProvider";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
 import { CgShoppingCart } from "react-icons/cg";
@@ -21,6 +22,7 @@ const creditCardIcons = [
    paypal,
 ];
 const ProductCalculation = ({ product }: { product: any }) => {
+   const { addItemToCart } = useContext(CartContext);
    const [quantity, setQuantity] = useState(1);
    const [totalPrice, setTotalPrice] = useState(product?.price?.current);
 
@@ -41,6 +43,15 @@ const ProductCalculation = ({ product }: { product: any }) => {
    useEffect(() => {
       calculateTotalPrice();
    }, [quantity]);
+
+   // Add item to cart
+   const handleAddToCart = () => {
+      addItemToCart({
+         sku: product?.sku,
+         quantity: quantity,
+         price: totalPrice,
+      });
+   };
 
    return (
       <div>
@@ -110,7 +121,9 @@ const ProductCalculation = ({ product }: { product: any }) => {
                   <BsHandbag className="mr-2 h-4 w-4" />
                   Buy Now
                </button>
-               <button className="flex w-full items-center justify-center rounded-lg bg-secondary py-4 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary">
+               <button
+                  onClick={handleAddToCart}
+                  className="flex w-full items-center justify-center rounded-lg bg-secondary py-4 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary">
                   <CgShoppingCart className="mr-2 h-4 w-4" />
                   Add to Cart
                </button>
