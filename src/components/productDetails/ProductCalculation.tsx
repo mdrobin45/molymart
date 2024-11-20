@@ -81,9 +81,17 @@ const ProductCalculation = ({ product }: { product: any }) => {
             </div>
 
             {/* Stock Status */}
-            <div className="inline-flex items-center bg-green-100 px-2.5 py-0.5 mt-3">
-               <span className="text-xs py-[2px] font-medium text-green-600">
-                  In Stock
+            <div
+               className={`inline-flex items-center bg-green-100 px-2.5 py-0.5 mt-3 ${
+                  product?.sold_count === 0 ? "bg-red-100" : ""
+               }`}>
+               <span
+                  className={`text-xs py-[2px] font-medium ${
+                     product?.sold_count === 0
+                        ? "text-red-600"
+                        : "text-green-600"
+                  }`}>
+                  {product?.sold_count === 0 ? "Out of Stock" : "In Stock"}
                </span>
             </div>
 
@@ -128,13 +136,25 @@ const ProductCalculation = ({ product }: { product: any }) => {
 
             {/* Action Buttons */}
             <div className="space-y-3 my-3">
-               <button className="flex w-full items-center justify-center rounded-lg bg-primary py-4 text-sm font-semibold text-secondary shadow-sm hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary">
+               <button
+                  disabled={product?.sold_count === 0}
+                  
+                  className={`flex w-full items-center justify-center rounded-lg bg-primary py-4 text-sm font-semibold text-secondary shadow-sm hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary ${
+                     product?.sold_count === 0
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                  }`}>
                   <BsHandbag className="mr-2 h-4 w-4" />
                   Buy Now
                </button>
                <button
+                  disabled={product?.sold_count === 0}
                   onClick={handleAddToCart}
-                  className="flex w-full items-center justify-center rounded-lg bg-secondary py-4 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary">
+                  className={`flex w-full items-center justify-center rounded-lg bg-secondary py-4 text-sm font-semibold text-white shadow-sm hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary ${
+                     product?.sold_count === 0
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                  }`}>
                   <CgShoppingCart className="mr-2 h-4 w-4" />
                   Add to Cart
                </button>

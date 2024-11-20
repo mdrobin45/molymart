@@ -39,7 +39,9 @@ const ProductInfo = ({ product }: { product: any }) => {
             <p className="text-sm py-2 text-gray-600">{product?.description}</p>
 
             {/* Sale ends countdown */}
-            <SalesEndCountDown timeLeft={product?.sale?.time_left} />
+            {product?.sold_count !== 0 && (
+               <SalesEndCountDown timeLeft={product?.sale?.time_left} />
+            )}
          </div>
 
          {/* Price */}
