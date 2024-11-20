@@ -8,11 +8,7 @@ interface ProductDetailsProps {
 const ProductDetails = async ({ params }: ProductDetailsProps) => {
    const currentParams = await params;
    const fetchProducts = await fetch(
-      `${
-         process.env.NODE_ENV === "development"
-            ? "http://localhost:3000"
-            : process.env.BASE_URL
-      }/data/products.json`
+      "https://molymart.vercel.app/data/products.json"
    );
 
    const products = await fetchProducts.json();
