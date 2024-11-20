@@ -22,18 +22,29 @@ const creditCardIcons = [
    paypal,
 ];
 const ProductCalculation = ({ product }: { product: any }) => {
-   const { addItemToCart } = useContext(CartContext);
+   const { addItemToCart, cart } = useContext(CartContext);
+   const currentProduct = cart.find((item: any) => item.sku === product.sku);
    const [quantity, setQuantity] = useState(1);
    const [totalPrice, setTotalPrice] = useState(product?.price?.current);
 
+   // Initialize total price
+   useEffect(() => {
+      setTotalPrice(currentProduct?.price || product?.price?.current);
+   }, [currentProduct, product]);
+
+   // Initialize quantity
+   useEffect(() => {
+      setQuantity(currentProduct?.quantity || 1);
+   }, [currentProduct]);
+
    // Quantity Increment
    const handleIncrement = () => {
-      setQuantity((prev) => prev + 1);
+      setQuantity((prev: number) => prev + 1);
    };
 
    // Quantity Decrement
    const handleDecrement = () => {
-      setQuantity((prev) => Math.max(1, prev - 1));
+      setQuantity((prev: number) => Math.max(1, prev - 1));
    };
 
    // Calculate total price
