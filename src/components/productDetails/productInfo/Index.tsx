@@ -12,15 +12,8 @@ import { IoIosGitCompare } from "react-icons/io";
 import SalesEndCountDown from "./SalesEndCountDown";
 import { Rating } from "react-simple-star-rating";
 
-// Sizes and colors
-const sizes = ["38", "40", "42", "43", "44"];
-const colors = [
-   { name: "gray", hex: "#64748b" },
-   { name: "blue", hex: "#0284c7" },
-   { name: "red", hex: "#dc2626" },
-];
 
-const ProductInfo = () => {
+const ProductInfo = ({ product }: { product: any }) => {
    const [selectedSize, setSelectedSize] = useState("42");
    const [selectedColor, setSelectedColor] = useState("gray");
    return (
@@ -30,34 +23,38 @@ const ProductInfo = () => {
             <div className="flex items-center gap-2">
                <Rating
                   style={{ marginTop: "-10px" }}
-                  initialValue={4}
+                  initialValue={product?.reviews?.rating}
                   size={20}
+                  allowFraction
                   readonly
                />
-               <span className="text-sm text-gray-600">(98 Reviews)</span>
+               <span className="text-sm text-gray-600">
+                  ({product?.reviews?.count} Reviews)
+               </span>
                <span className="mx-2 text-gray-300">|</span>
-               <span className="ml-2 font-medium text-red-600">500+ Sold</span>
+               <span className="ml-2 font-medium text-red-600">
+                  {product?.sold_count} Sold
+               </span>
             </div>
             <h1 className="mt-4 text-2xl font-semibold">
-               Charms Charisma heavy winter full sleeve jacket with hoodie for
-               women made from wolves fur and buffalo bones
+               {product?.title}
             </h1>
             <p className="text-sm py-2 text-gray-600">
-               The garments labelled as committed are products that have been
-               produced using sustainable fibres or processes, reducing their
-               environmental impact. Moly’s goal is to support the implemented.
+               {product?.description}
             </p>
 
             {/* Sale ends countdown */}
-            <SalesEndCountDown />
+            <SalesEndCountDown timeLeft={product?.sale?.time_left} />
          </div>
 
          {/* Price */}
          <div className="flex items-center gap-4">
-            <span className="text-3xl font-bold">$100.00</span>
-            <span className="text-lg text-gray-500 line-through">$129.99</span>
+            <span className="text-3xl font-bold">${product?.price?.current}</span>
+            <span className="text-lg text-gray-500 line-through">
+               ${product?.price?.original}
+            </span>
             <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-black">
-               Save 15%
+               Save {product?.price?.discount}
             </span>
          </div>
 
@@ -65,7 +62,7 @@ const ProductInfo = () => {
          <div>
             <h3 className="mb-2 font-medium">Color</h3>
             <div className="flex gap-2">
-               {colors.map((color) => (
+               {product?.options?.colors.map((color: any) => (
                   <button
                      key={color?.name}
                      onClick={() => setSelectedColor(color?.name)}
@@ -87,7 +84,7 @@ const ProductInfo = () => {
          <div>
             <h3 className="mb-2 font-medium">Size</h3>
             <div className="flex gap-2">
-               {sizes.map((size) => (
+               {product?.options?.sizes.map((size: string) => (
                   <button
                      key={size}
                      onClick={() => setSelectedSize(size)}
@@ -105,15 +102,14 @@ const ProductInfo = () => {
          <div className="pt-4 border-t border-gray-200 space-y-4">
             {/* SKU */}
             <div className="text-sm text-gray-600">
-               <span className="font-semibold">SKU:</span> UTD7802574
+               <span className="font-semibold">SKU:</span> {product?.sku}
             </div>
 
             {/* Categories */}
             <div className="text-sm text-gray-600">
                <span className="font-semibold">Categories: </span>
                <span className="text-gray-900 font-500">
-                  Fashion, Winter, Women, New Arrivals, Flash Sales, Special
-                  Offer, Hoodie
+                  {product?.categories.join(", ")}
                </span>
             </div>
 

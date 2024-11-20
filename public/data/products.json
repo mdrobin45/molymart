@@ -1,0 +1,60 @@
+[
+   {
+      "title": "Charms Charisma Heavy Winter Full Sleeve Jacket with Hoodie for Women",
+      "description": "Made from wolves fur and buffalo bones. The garments labelled as committed are produced using sustainable fibres or processes, reducing their environmental impact. Molly's goal is to support the implemented.",
+      "slug": "charms-charisma-heavy-winter-full-sleeve-jacket-with-hoodie-for-women",
+      "price": {
+         "current": 100.0,
+         "original": 129.99,
+         "discount": "15%"
+      },
+      "sale": {
+         "status": "active",
+         "time_left": {
+            "days": 5,
+            "hours": 12,
+            "minutes": 45,
+            "seconds": 19
+         }
+      },
+      "options": {
+         "colors": [
+            {
+               "name": "grey",
+               "hex": "#808080"
+            },
+            {
+               "name": "pink",
+               "hex": "#FFC0CB"
+            }
+         ],
+         "sizes": ["38", "40", "42", "43", "44"]
+      },
+      "sku": "UTD7802574",
+      "categories": [
+         "Fashion",
+         "Winter",
+         "Women",
+         "New Arrivals",
+         "Flash Sales",
+         "Special Offer",
+         "Hoodie"
+      ],
+      "images": [
+         "https://i.ibb.co.com/pPjQvtG/jacket5.jpg",
+         "https://i.ibb.co.com/S7RcyMJ/jacket4.jpg",
+         "https://i.ibb.co.com/VJ26M6q/jacket3.jpg",
+         "https://i.ibb.co.com/QngybpK/jacke2.jpg",
+         "https://i.ibb.co.com/2dmG5mh/jacket1.jpg"
+      ],
+      "reviews": {
+         "count": 98,
+         "rating": 4.5
+      },
+      "sold_count": 500,
+      "actions": {
+         "add_to_wishlist": true,
+         "add_to_compare": true
+      }
+   }
+]

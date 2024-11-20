@@ -6,7 +6,7 @@ import paypal from "@/assets/images/paypal.svg";
 import visa from "@/assets/images/visa.svg";
 import westernUnion from "@/assets/images/western-union.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { BsHandbag } from "react-icons/bs";
 import { CgShoppingCart } from "react-icons/cg";
@@ -20,8 +20,9 @@ const creditCardIcons = [
    americanExpress,
    paypal,
 ];
-const ProductCalculation = () => {
+const ProductCalculation = ({ product }: { product: any }) => {
    const [quantity, setQuantity] = useState(1);
+   const [totalPrice, setTotalPrice] = useState(product?.price?.current);
 
    // Quantity Increment
    const handleIncrement = () => {
@@ -33,6 +34,14 @@ const ProductCalculation = () => {
       setQuantity((prev) => Math.max(1, prev - 1));
    };
 
+   // Calculate total price
+   const calculateTotalPrice = () => {
+      setTotalPrice(product?.price?.current * quantity);
+   };
+   useEffect(() => {
+      calculateTotalPrice();
+   }, [quantity]);
+
    return (
       <div>
          <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
@@ -43,7 +52,7 @@ const ProductCalculation = () => {
                      Total Price
                   </h2>
                   <div className="flex items-baseline gap-x-3 pt-2">
-                     <p className="text-3xl font-bold">$208.00</p>
+                     <p className="text-3xl font-bold">${totalPrice}</p>
                      <p className="text-xs text-gray-500">(VAT included)</p>
                   </div>
                </div>

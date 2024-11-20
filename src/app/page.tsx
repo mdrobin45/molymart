@@ -1,9 +1,3 @@
-import ProductDetails from "@/components/productDetails/Index";
-
 export default function Home() {
-   return (
-      <div>
-         <ProductDetails />
-      </div>
-   );
+   return <div>Home</div>;
 }
