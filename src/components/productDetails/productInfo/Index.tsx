@@ -10,6 +10,7 @@ import {
 import { FaFacebookF } from "react-icons/fa";
 import { IoIosGitCompare } from "react-icons/io";
 import SalesEndCountDown from "./SalesEndCountDown";
+import { Rating } from "react-simple-star-rating";
 
 // Sizes and colors
 const sizes = ["38", "40", "42", "43", "44"];
@@ -27,11 +28,12 @@ const ProductInfo = () => {
          {/* Rating */}
          <div>
             <div className="flex items-center gap-2">
-               {"★★★★☆".split("").map((star, i) => (
-                  <span key={i} className="text-yellow-400">
-                     {star}
-                  </span>
-               ))}
+               <Rating
+                  style={{ marginTop: "-10px" }}
+                  initialValue={4}
+                  size={20}
+                  readonly
+               />
                <span className="text-sm text-gray-600">(98 Reviews)</span>
                <span className="mx-2 text-gray-300">|</span>
                <span className="ml-2 font-medium text-red-600">500+ Sold</span>
