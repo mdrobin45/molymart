@@ -2,7 +2,10 @@ import ProductCalculation from "@/components/productDetails/ProductCalculation";
 import ProductGallery from "@/components/productDetails/ProductGallery";
 import ProductInfo from "@/components/productDetails/productInfo/Index";
 
-const ProductDetails = async ({ params }: { params: { slug: string } }) => {
+interface ProductDetailsProps {  
+   params: { slug: string };
+}
+const ProductDetails = async ({ params }: ProductDetailsProps) => {
    const fetchProducts = await fetch(
       `${
          process.env.NODE_ENV === "development"
