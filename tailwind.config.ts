@@ -10,7 +10,7 @@ export default {
       extend: {
          colors: {
             primary: "#CEE34C",
-            secondary: "#000000",
+            secondary: "#0D0D0D",
          },
          fontFamily: {
             instrumentSans: ["var(--font-instrument-sans)"],

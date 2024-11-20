@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/header/Index";
 
 // Fonts
 const instrumentSans = Instrument_Sans({
@@ -22,7 +23,10 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body className={`${instrumentSans.variable}`}>
-            <main className="font-instrumentSans">{children}</main>
+            <main className="font-instrumentSans">
+               <Header />
+               {children}
+            </main>
          </body>
       </html>
    );
