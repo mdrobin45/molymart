@@ -1,6 +1,6 @@
 import React from "react";
 import ProductGallery from "./ProductGallery";
-import ProductInfo from "./ProductInfo";
+import ProductInfo from "./productInfo/Index";
 import ProductCalculation from "./ProductCalculation";
 
 

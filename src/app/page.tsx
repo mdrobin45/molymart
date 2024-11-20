@@ -1,4 +1,4 @@
-import ProductDetails from "@/components/ProductDetails/Index";
+import ProductDetails from "@/components/productDetails/Index";
 
 export default function Home() {
    return (

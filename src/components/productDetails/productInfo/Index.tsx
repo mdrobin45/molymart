@@ -1,11 +1,23 @@
 "use client";
 import { useState } from "react";
-import { BsInstagram, BsTiktok, BsTwitterX, BsWhatsapp } from "react-icons/bs";
+import {
+   BsHeart,
+   BsInstagram,
+   BsTiktok,
+   BsTwitterX,
+   BsWhatsapp,
+} from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
+import { IoIosGitCompare } from "react-icons/io";
+import SalesEndCountDown from "./SalesEndCountDown";
 
 // Sizes and colors
 const sizes = ["38", "40", "42", "43", "44"];
-const colors = ["gray", "blue"];
+const colors = [
+   { name: "gray", hex: "#64748b" },
+   { name: "blue", hex: "#0284c7" },
+   { name: "red", hex: "#dc2626" },
+];
 
 const ProductInfo = () => {
    const [selectedSize, setSelectedSize] = useState("42");
@@ -21,21 +33,28 @@ const ProductInfo = () => {
                   </span>
                ))}
                <span className="text-sm text-gray-600">(98 Reviews)</span>
-               <span className="ml-2 rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-600">
-                  500+ Sold
-               </span>
+               <span className="mx-2 text-gray-300">|</span>
+               <span className="ml-2 font-medium text-red-600">500+ Sold</span>
             </div>
             <h1 className="mt-4 text-2xl font-semibold">
                Charms Charisma heavy winter full sleeve jacket with hoodie for
                women made from wolves fur and buffalo bones
             </h1>
+            <p className="text-sm py-2 text-gray-600">
+               The garments labelled as committed are products that have been
+               produced using sustainable fibres or processes, reducing their
+               environmental impact. Moly’s goal is to support the implemented.
+            </p>
+
+            {/* Sale ends countdown */}
+            <SalesEndCountDown />
          </div>
 
          {/* Price */}
          <div className="flex items-center gap-4">
             <span className="text-3xl font-bold">$100.00</span>
             <span className="text-lg text-gray-500 line-through">$129.99</span>
-            <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-600">
+            <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-black">
                Save 15%
             </span>
          </div>
@@ -46,12 +65,14 @@ const ProductInfo = () => {
             <div className="flex gap-2">
                {colors.map((color) => (
                   <button
-                     key={color}
-                     onClick={() => setSelectedColor(color)}
+                     key={color?.name}
+                     onClick={() => setSelectedColor(color?.name)}
+                     style={{
+                        backgroundColor: color?.hex,
+                        borderColor: color?.hex,
+                     }}
                      className={`h-8 w-8 rounded-full border-2 ${
-                        color === "gray" ? "bg-gray-600" : "bg-blue-600"
-                     } ${
-                        selectedColor === color
+                        selectedColor === color?.name
                            ? "ring-2 ring-black ring-offset-2"
                            : ""
                      }`}
@@ -70,7 +91,7 @@ const ProductInfo = () => {
                      onClick={() => setSelectedSize(size)}
                      className={`h-10 w-10 rounded border ${
                         selectedSize === size
-                           ? "border-black bg-black text-white"
+                           ? "border-black bg-primary text-black"
                            : "border-gray-200"
                      }`}>
                      {size}
@@ -98,7 +119,6 @@ const ProductInfo = () => {
             <div className="flex items-center space-x-4">
                <span className="font-semibold text-gray-600">Share</span>
                <div className="flex space-x-3 text-gray-600">
-                  {/* Replace # with actual social media links */}
                   <a href="#" className="hover:text-gray-800">
                      <FaFacebookF className="h-5 w-5" />
                   </a>
@@ -119,11 +139,11 @@ const ProductInfo = () => {
 
             {/* Wishlist and Compare Buttons */}
             <div className="flex space-x-4">
-               <button className="flex items-center px-4 py-2 text-sm text-gray-600 bg-gray-100 border border-gray-200 rounded-md hover:bg-gray-200">
-                  <i className="fas fa-heart mr-2"></i> Add to Wishlist
+               <button className="flex items-center px-4 py-2 text-sm text-black bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
+                  <BsHeart className="mr-2 h-4 w-4" /> Add to Wishlist
                </button>
-               <button className="flex items-center px-4 py-2 text-sm text-gray-600 bg-gray-100 border border-gray-200 rounded-md hover:bg-gray-200">
-                  <i className="fas fa-balance-scale mr-2"></i> Add to Compare
+               <button className="flex items-center px-4 py-2 text-sm text-black bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
+                  <IoIosGitCompare className="mr-2 h-4 w-4" /> Add to Compare
                </button>
             </div>
          </div>
