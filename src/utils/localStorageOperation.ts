@@ -3,11 +3,11 @@ export const saveDataLocalStorage = (key: string, data: any) => {
    const getData = getDataLocalStorage(key);
    if (getData) {
       const updatedData = [...getData, data];
-      const findItem = updatedData.find((item: any) => item.sku === data.sku);
+      let findItem = updatedData.find((item: any) => item.sku === data.sku);
 
       if (findItem) {
       if (findItem.quantity !== data.quantity) {
-            findItem.quantity = data.quantity;
+            findItem = data;
             const updateFindItem = updatedData.filter(
                (item: any) => item.sku !== data.sku
             );
