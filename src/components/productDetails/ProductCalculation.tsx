@@ -53,6 +53,7 @@ const ProductCalculation = ({ product }: { product: any }) => {
    };
    useEffect(() => {
       calculateTotalPrice();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [quantity]);
 
    // Add item to cart
@@ -138,7 +139,6 @@ const ProductCalculation = ({ product }: { product: any }) => {
             <div className="space-y-3 my-3">
                <button
                   disabled={product?.sold_count === 0}
-                  
                   className={`flex w-full items-center justify-center rounded-lg bg-primary py-4 text-sm font-semibold text-secondary shadow-sm hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary ${
                      product?.sold_count === 0
                         ? "opacity-50 cursor-not-allowed"

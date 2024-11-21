@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { CartContext } from "@/context/CartContextProvider";
+import { useContext, useState } from "react";
 import {
    BsHeart,
    BsInstagram,
@@ -13,8 +14,16 @@ import { Rating } from "react-simple-star-rating";
 import SalesEndCountDown from "./SalesEndCountDown";
 
 const ProductInfo = ({ product }: { product: any }) => {
+   const { toggleWishlistItem } = useContext(CartContext);
    const [selectedSize, setSelectedSize] = useState("42");
    const [selectedColor, setSelectedColor] = useState("gray");
+
+   // Handle add to wishlist
+   const handleAddWishlist = () => {
+      toggleWishlistItem({
+         sku: product?.sku,
+      });
+   };
    return (
       <div className="flex flex-col gap-6">
          {/* Rating */}
@@ -136,7 +145,9 @@ const ProductInfo = ({ product }: { product: any }) => {
 
             {/* Wishlist and Compare Buttons */}
             <div className="flex space-x-4">
-               <button className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
+               <button
+                  onClick={handleAddWishlist}
+                  className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
                   <BsHeart className="mr-2 h-4 w-4" /> Add to Wishlist
                </button>
                <button className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">

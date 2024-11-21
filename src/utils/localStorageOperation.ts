@@ -24,6 +24,27 @@ export const saveDataLocalStorage = (key: string, data: any) => {
    }
 };
 
+// Toggle wishlist
+export const toggleWishlist = (item: any) => {
+   console.log(item);
+   const wishlistData = getDataLocalStorage("wishlist");
+   if (wishlistData) {
+      const findItem = wishlistData.find(
+         (wishlistItem: any) => wishlistItem.sku === item.sku
+      );
+      if (findItem) {
+         const updatedWishlist = wishlistData.filter(
+            (wishlistItem: any) => wishlistItem.sku !== item.sku
+         );
+         localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      } else {
+         localStorage.setItem("wishlist", JSON.stringify([...wishlistData, item]));
+      }
+   } else {
+      localStorage.setItem("wishlist", JSON.stringify([item]));
+   }
+};
+
 // Get data from local storage
 export const getDataLocalStorage = (key: string) => {
    const data = localStorage.getItem(key);

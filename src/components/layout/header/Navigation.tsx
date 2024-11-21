@@ -1,4 +1,7 @@
+"use client";
+import { CartContext } from "@/context/CartContextProvider";
 import Link from "next/link";
+import { useContext } from "react";
 import { TfiAngleRight } from "react-icons/tfi";
 
 // Navigation pages
@@ -25,6 +28,7 @@ const pages = [
 ];
 
 const Navigation = () => {
+   const { wishlist } = useContext(CartContext);
    return (
       <div className="border-b">
          <div className="container mx-auto px-4">
@@ -94,7 +98,7 @@ const Navigation = () => {
                         className="hover:text-primary flex items-center gap-2 hover:fill-primary text-secondary font-[500] text-[15px]">
                         Wishlist
                         <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                           1
+                           {wishlist?.length !== 0 ? wishlist?.length : 0}
                         </span>
                      </Link>
                   </li>

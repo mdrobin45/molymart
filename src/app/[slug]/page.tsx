@@ -7,9 +7,7 @@ interface ProductDetailsProps {
 }
 const ProductDetails = async ({ params }: ProductDetailsProps) => {
    const currentParams = await params;
-   const fetchProducts = await fetch(
-      "https://molymart.vercel.app/data/products.json"
-   );
+   const fetchProducts = await fetch("http://localhost:3000/data/products.json");
 
    const products = await fetchProducts.json();
    const currentProduct = products.find(
