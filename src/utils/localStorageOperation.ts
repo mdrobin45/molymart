@@ -1,26 +1,30 @@
+import toast from "react-hot-toast";
+
 // Save data to local storage
 export const saveDataLocalStorage = (key: string, data: any) => {
    const getData = getDataLocalStorage(key);
    if (getData) {
       const updatedData = [...getData, data];
-      let findItem = updatedData.find((item: any) => item.sku === data.sku);
-
+      let findItem = getData.find((item: any) => item.sku === data.sku);
+      
       if (findItem) {
       if (findItem.quantity !== data.quantity) {
             findItem = data;
             const updateFindItem = updatedData.filter(
                (item: any) => item.sku !== data.sku
             );
-            localStorage.setItem(key, JSON.stringify([...updateFindItem, findItem]));
-            alert("Product quantity updated");
-         } else {
-            alert("Product already in cart");
+         localStorage.setItem(key, JSON.stringify([...updateFindItem, findItem]));
+         toast.success("Product quantity updated");
+      } else {
+         toast.error("Product already in cart");
          }
       } else {
          localStorage.setItem(key, JSON.stringify(updatedData));
+         toast.success("Product added to cart");
       }
    } else {
       localStorage.setItem(key, JSON.stringify([data]));
+      toast.success("Product added to cart");
    }
 };
 

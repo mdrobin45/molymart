@@ -2,6 +2,7 @@ import Header from "@/components/layout/header/Index";
 import CartContextProvider from "@/context/CartContextProvider";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 // Fonts
@@ -28,6 +29,7 @@ export default function RootLayout({
                <CartContextProvider>
                   <Header />
                   {children}
+                  <Toaster position="top-center" reverseOrder={false} />
                </CartContextProvider>
             </main>
          </body>
