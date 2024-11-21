@@ -3,6 +3,7 @@ import { CartContext } from "@/context/CartContextProvider";
 import { useContext, useState } from "react";
 import {
    BsHeart,
+   BsHeartFill,
    BsInstagram,
    BsTiktok,
    BsTwitterX,
@@ -14,7 +15,7 @@ import { Rating } from "react-simple-star-rating";
 import SalesEndCountDown from "./SalesEndCountDown";
 
 const ProductInfo = ({ product }: { product: any }) => {
-   const { toggleWishlistItem } = useContext(CartContext);
+   const { toggleWishlistItem, wishlist } = useContext(CartContext);
    const [selectedSize, setSelectedSize] = useState("42");
    const [selectedColor, setSelectedColor] = useState("gray");
 
@@ -148,7 +149,12 @@ const ProductInfo = ({ product }: { product: any }) => {
                <button
                   onClick={handleAddWishlist}
                   className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
-                  <BsHeart className="mr-2 h-4 w-4" /> Add to Wishlist
+                  {wishlist?.find((item: any) => item.sku === product?.sku) ? (
+                     <BsHeartFill className="mr-2 h-4 w-4" />
+                  ) : (
+                     <BsHeart className="mr-2 h-4 w-4" />
+                  )}
+                  Add to Wishlist
                </button>
                <button className="flex items-center px-4 py-2 text-sm text-secondary bg-transparent border border-gray-200 rounded-full hover:bg-gray-200">
                   <IoIosGitCompare className="mr-2 h-4 w-4" /> Add to Compare
